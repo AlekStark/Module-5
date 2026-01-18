@@ -56,8 +56,15 @@ class MainClass
         WriteLine("Ваше имя: {0}", name);
         WriteLine("Ваш возраст: {0}", age);
 
-        ShowColor();
-
-
+        string[] favcolors = new string[3];
+        for (int i = 0; i < favcolors.Length; i++)
+        {
+            favcolors[i] = ShowColor();
+        }
+        WriteLine("Любимые цвета:");
+        foreach (var color in favcolors)
+        {
+            WriteLine(color);
+        }
     }
 }
