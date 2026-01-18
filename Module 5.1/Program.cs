@@ -4,7 +4,7 @@ using static System.Console;
 class MainClass
 {
 
-    static void ShowColor()
+    static string ShowColor()
     {
         WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
         var color = ReadLine();
@@ -37,6 +37,7 @@ class MainClass
                 WriteLine("Your color is yellow!");
                 break;
         }
+        return color;
     }
 
     public static void Main(string[] args)
