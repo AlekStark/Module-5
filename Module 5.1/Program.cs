@@ -66,5 +66,7 @@ class MainClass
         {
             WriteLine(color);
         }
+
+        ReadKey();
     }
 }
