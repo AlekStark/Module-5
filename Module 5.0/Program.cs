@@ -17,7 +17,10 @@ namespace Module5
                 WriteLine("Введите название блюда номер {0}", i + 1);
                 User.Dishes[i] = ReadLine();
             }
-            ReadKey();
+            ReadLine();
+
+
+            //Console.WriteLine("Hello, World!");
         }
     }
-}
+//}
