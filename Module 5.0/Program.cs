@@ -18,9 +18,6 @@ namespace Module5
                 User.Dishes[i] = ReadLine();
             }
             ReadLine();
-
-
-            //Console.WriteLine("Hello, World!");
         }
     }
-//}
+}
