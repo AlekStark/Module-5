@@ -7,7 +7,7 @@ class Program
     {
         (string FirstName, string LastName, int Age) MainUser;
         MainUser = Enteruser();
-        WriteLine(MainUser.FirstName + " " + MainUser.LastName);
+        WriteLine(MainUser.FirstName + " " + MainUser.LastName + " " + MainUser.Age);
     }
     static (string FirstName, string LastName, int Age) Enteruser()
     {
@@ -19,7 +19,7 @@ class Program
         WriteLine("Укажите фамилию:");
         User.LastName = ReadLine();
 
-        /*string age;
+        string age;
         int intage;
         do
         {
@@ -28,14 +28,15 @@ class Program
         }
         while (CheckNum(age, out intage));
 
-        User.Age = intage;*/
-        // return User;
+        User.Age = intage;
+        return User;
     }
-    /*static bool CheckNum(string number, out int corrnumber)
+
+    static bool CheckNum(string number, out int corrnumber)
     {
-        if(int.TryParse(number, out int intnum))
+        if (int.TryParse(number, out int intnum))
         {
-            if(intnum>0)
+            if (intnum > 0)
             {
                 corrnumber = intnum;
                 return false;
@@ -47,5 +48,5 @@ class Program
             corrnumber = 0;
             return true;
         }
-    }*/
+    }
 }
