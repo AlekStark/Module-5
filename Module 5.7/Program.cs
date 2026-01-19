@@ -41,12 +41,8 @@ class Program
                 corrnumber = intnum;
                 return false;
             }
-
         }
-        else
-        {
-            corrnumber = 0;
-            return true;
-        }
+        corrnumber = 0;
+        return true;
     }
 }
