@@ -10,7 +10,7 @@ class Program
         //(string FirstName, string LastName, int Age, int HasPet, int CountPet) MainUser;
         var MainUser = Enteruser();
         string text = "Фамилия: " + MainUser.FirstName + "\nИмя: " + MainUser.LastName + "\nВозраст: " + MainUser.Age + "\nНаличие питомцев: " + MainUser.HasPet +
-            "\nКоличество питомцев: " + MainUser.CountPet ;
+            "\nКоличество питомцев: " + MainUser.CountPet;
 
         WriteLine(text);
     }
