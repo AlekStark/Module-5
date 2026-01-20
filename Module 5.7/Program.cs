@@ -57,13 +57,14 @@ class Program
             {
                 User.HasPet = true;
                 User.CountPet = intage;
+                User.PetName = GetPetName(User.CountPet);
              /* User.PetName = new string[User.CountPet];
                 for (int i = 0; i < User.PetName.Length; i++)
                 {
                     WriteLine("Укажите кличку питомца {0}", i);
                     User.PetName[i] = ReadLine();
                 }
-              */  
+              */
             }
             
         }
@@ -92,5 +93,15 @@ class Program
         }
         corrnumber = 0;
         return true;
+    }
+    static string[] GetPetName(int countPet)
+    {
+        string [] petName = new string[countPet];
+        for (int i = 0; i < countPet; i++)
+        {
+            WriteLine("Укажите кличку питомца {0}", i);
+            petName[i] = ReadLine();
+        }
+        return petName; 
     }
 }
