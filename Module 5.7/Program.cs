@@ -52,25 +52,20 @@ class Program
             {
                 User.HasPet = false;
                 User.CountPet = 0;
+                User.PetName = new string[0];
             }
             else
             {
                 User.HasPet = true;
                 User.CountPet = intage;
-             /* User.PetName = new string[User.CountPet];
-                for (int i = 0; i < User.PetName.Length; i++)
-                {
-                    WriteLine("Укажите кличку питомца {0}", i);
-                    User.PetName[i] = ReadLine();
-                }
-              */  
+                User.PetName = GetPetName(User.CountPet);
             }
-            
         }
         else
         {
             User.CountPet = 0;
             User.HasPet = false;
+            User.PetName = new string[0];
         }
         return User;
     }
@@ -92,5 +87,15 @@ class Program
         }
         corrnumber = 0;
         return true;
+    }
+    static string[] GetPetName(int countPet)
+    {
+        string [] petName = new string[countPet];
+        for (int i = 0; i < countPet; i++)
+        {
+            WriteLine("Укажите кличку питомца {0}", i);
+            petName[i] = ReadLine();
+        }
+        return petName; 
     }
 }
