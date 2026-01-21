@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using static System.Console;
@@ -8,16 +9,33 @@ class Program
 {
     private static void Main(string[] args)
     {
-        //(string FirstName, string LastName, int Age, int HasPet, int CountPet) MainUser;
-        var MainUser = Enteruser(); // Вызываем метод сбора данных
-        string text = "Фамилия: " + MainUser.FirstName + "\nИмя: " + MainUser.LastName + "\nВозраст: " + MainUser.Age + "\nНаличие питомцев: " + MainUser.HasPet +
-            "\nКоличество питомцев: " + MainUser.CountPet;
+        
+        var MainUser = Enteruser();
+        string CountPetText ="";
+        string CountColorText="";
+        if (MainUser.CountPet > 0)
+        {
+            for (int i = 0; i < MainUser.CountPet; i++)
+            {
+                CountPetText = $"\nИмя питомца {i}: {MainUser.PetName}";
+            }
+            CountPetText = CountPetText.Remove(0, 2);
+        }
+        if (MainUser.CountColor > 0)
+        {
+            for (int i = 0; i < MainUser.CountColor; i++)
+            {
+                CountColorText = $"\nИмя питомца {i}: {MainUser.ColorName}";
+            }
+            CountColorText = CountColorText.Remove(0, 2);
+        }
+        string text = $"Фамилия: {MainUser.FirstName}  \nИмя: {MainUser.LastName} \nВозраст: {MainUser.Age} \nНаличие питомцев: {MainUser.HasPet} \nКоличество питомцев: {MainUser.CountPet}" + CountPetText + $"\nКоличество цветов: {MainUser.CountColor}" + CountColorText;
 
         WriteLine(text);
     }
-    static (string FirstName, string LastName, int Age, bool HasPet, int CountPet, string[] PetName) Enteruser()
+    static (string FirstName, string LastName, int Age, bool HasPet, int CountPet, string[] PetName, int CountColor, string[] ColorName) Enteruser()
     {
-        (string FirstName, string LastName, int Age, bool HasPet, int CountPet, string[] PetName) User;
+        (string FirstName, string LastName, int Age, bool HasPet, int CountPet, string[] PetName, int CountColor, string[] ColorName) User;
 
         WriteLine("Укажите имя:");
         User.FirstName = ReadLine();
@@ -51,7 +69,7 @@ class Program
 
             User.HasPet = true;
             User.CountPet = intage;
-            User.PetName = GetPetName(User.CountPet);
+            User.PetName = GetName(User.CountPet, "Pet");
         }
         else
         {
@@ -59,8 +77,20 @@ class Program
             User.CountPet = 0;
             User.PetName = new string[0];
         }
-        WriteLine("Есть ли у вас животные? Да или Нет");
-        var pet = ReadLine();
+        string colorNum;
+        do
+        {
+            WriteLine("Укажите количеество любимых цветов цифрами:");
+            colorNum = ReadLine();
+        }
+        while (CheckNum(colorNum, out intage)); //цикл для проверки, что введины цифры.
+        User.CountColor = intage;
+
+        if (User.CountColor > 0)
+        {
+            User.ColorName = GetName(User.CountPet, "Color");
+        }
+
 
         return User;
     }
@@ -79,21 +109,28 @@ class Program
         return true;
     }
 
-    static string[] GetPetName(int countPet)
+    static string[] GetName(int countArr, string Operation)
     {
-        string [] petName = new string[countPet];
-        for (int i = 0; i < countPet; i++)
+        string [] arrName = new string[countArr];
+        for (int i = 0; i < countArr; i++)
         {
             string Name;
             do
             {
-                WriteLine("Укажите кличку питомца {0}. Имя должно быть уникальным", i);
+                if (Operation == "Pet")
+                {
+                    WriteLine("Укажите кличку питомца {0}. Имя должно быть уникальным", i);
+                }
+                else
+                {
+                    WriteLine("Укажите цвет {0}. Цвет должен быть уникальным", i);
+                }
                 Name = ReadLine();
             }
-            while (CheckUniqueness(Name, petName, out bool result));
-            petName[i] = Name;
+            while (CheckUniqueness(Name, arrName, out bool result));
+            arrName[i] = Name;
         }
-        return petName; 
+        return arrName; 
     }
 
     static bool CheckUniqueness(string Name, string[] arr, out bool result)
