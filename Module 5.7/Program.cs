@@ -17,7 +17,7 @@ class Program
             for (int i = 0; i < MainUser.CountPet; i++)
             {
                 string petName;
-                CountPetText = CountPetText + "\nИмя питомца {i+1}: " + MainUser.PetName[i];
+                CountPetText = CountPetText + $"\nИмя питомца {i+1}: " + MainUser.PetName[i];
             }
             //CountPetText = CountPetText.Remove(0, 2);
         }
