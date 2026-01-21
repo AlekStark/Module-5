@@ -139,7 +139,6 @@ class Program
         string Pattern = "^[a-zA-Zа-яёА-ЯЁ]+$";
         if (Regex.IsMatch(Name, Pattern))
         {
-            WriteLine(Regex.IsMatch(Name, Pattern));
             for (int i = 0; i < arr.Length; i++)
             {
                 if (Name == arr[i])
