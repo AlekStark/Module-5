@@ -17,7 +17,7 @@ class Program
         {
             for (int i = 0; i < MainUser.CountPet; i++)
             {
-                CountPetText = $"\nИмя питомца {i}: {MainUser.PetName}";
+                CountPetText = CountPetText + $"\nИмя питомца {i}: {MainUser.PetName}";
             }
             CountPetText = CountPetText.Remove(0, 2);
         }
@@ -25,7 +25,7 @@ class Program
         {
             for (int i = 0; i < MainUser.CountColor; i++)
             {
-                CountColorText = $"\nИмя питомца {i}: {MainUser.ColorName}";
+                CountColorText = CountColorText + $"\nИмя питомца {i}: {MainUser.ColorName}";
             }
             CountColorText = CountColorText.Remove(0, 2);
         }
