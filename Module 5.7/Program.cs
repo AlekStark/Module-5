@@ -16,17 +16,18 @@ class Program
         {
             for (int i = 0; i < MainUser.CountPet; i++)
             {
-                CountPetText = CountPetText + $"\nИмя питомца {i}: {MainUser.PetName}";
+                string petName;
+                CountPetText = CountPetText + "\nИмя питомца {i+1}: " + MainUser.PetName[i];
             }
-            CountPetText = CountPetText.Remove(0, 2);
+            //CountPetText = CountPetText.Remove(0, 2);
         }
         if (MainUser.CountColor > 0)
         {
             for (int i = 0; i < MainUser.CountColor; i++)
             {
-                CountColorText = CountColorText + $"\nИмя питомца {i}: {MainUser.ColorName}";
+                CountColorText = CountColorText + $"\nИмя питомца {i+1}: " +MainUser.ColorName[i];
             }
-            CountColorText = CountColorText.Remove(0, 2);
+            //CountColorText = CountColorText.Remove(0, 2);
         }
         string text = $"Фамилия: {MainUser.FirstName}  \nИмя: {MainUser.LastName} \nВозраст: {MainUser.Age} \nНаличие питомцев: {MainUser.HasPet} \nКоличество питомцев: {MainUser.CountPet}" + CountPetText + $"\nКоличество цветов: {MainUser.CountColor}" + CountColorText;
 
