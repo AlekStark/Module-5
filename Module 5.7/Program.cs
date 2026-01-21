@@ -9,7 +9,6 @@ class Program
 {
     private static void Main(string[] args)
     {
-        
         var MainUser = Enteruser();
         string CountPetText ="";
         string CountColorText="";
@@ -90,8 +89,10 @@ class Program
         {
             User.ColorName = GetName(User.CountPet, "Color");
         }
-
-
+        else
+        {
+            User.ColorName = new string[0]; 
+        }
         return User;
     }
 
@@ -119,11 +120,11 @@ class Program
             {
                 if (Operation == "Pet")
                 {
-                    WriteLine("Укажите кличку питомца {0}. Имя должно быть уникальным", i);
+                    WriteLine("Укажите кличку питомца {0}. Имя должно быть уникальным", i+1);
                 }
                 else
                 {
-                    WriteLine("Укажите цвет {0}. Цвет должен быть уникальным", i);
+                    WriteLine("Укажите цвет {0}. Цвет должен быть уникальным", i+1);
                 }
                 Name = ReadLine();
             }
@@ -138,19 +139,20 @@ class Program
         string Pattern = "^[a-zA-Zа-яёА-ЯЁ]+$";
         if (Regex.IsMatch(Name, Pattern))
         {
+            WriteLine(Regex.IsMatch(Name, Pattern));
             for (int i = 0; i < arr.Length; i++)
             {
                 if (Name == arr[i])
                 {
-                    result = false;
+                    result = true;
                     return result;
                 }
             }
-            result = true;
+            result = false;
          }
         else
         {
-            result = false;
+            result = true;
         }
         return result; 
     }
